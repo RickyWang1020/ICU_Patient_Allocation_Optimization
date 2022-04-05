@@ -75,13 +75,13 @@ def extract_result_from_optim_result(optim):
     for j in range(Pe):
         existing_patient_subject_id = existing_patient_disease[j + 1][0]["subject_id"]
         # first idx means whether to icu
-        if arr[j * 3] == 1:
+        if arr[Pi * 3 + j * 3] == 1:
             result["icu"].append(existing_patient_subject_id)
         # second idx means whether to general inpatient unit
-        elif arr[j * 3 + 1] == 1:
+        elif arr[Pi * 3 + j * 3 + 1] == 1:
             result["general inpatient"].append(existing_patient_subject_id)
         # third idx means whether to icu waitlist
-        elif arr[j * 3 + 2] == 1:
+        elif arr[Pi * 3 + j * 3 + 2] == 1:
             result["icu waitlist"].append(existing_patient_subject_id)
         # see if error happens
         else:
